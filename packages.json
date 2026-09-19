@@ -1,0 +1,34 @@
+{
+  "description": [
+    "theatr.us PixInsight repository: scripts and tools for narrowband palette work.",
+    "Add https://pixinsight.psf-guard.com/ under Resources > Updates > Manage Repositories."
+  ],
+  "packages": [
+    {
+      "file": "packages/FPU_202609190601.zip",
+      "type": "script",
+      "releaseDate": "20260919",
+      "title": "Foraxx Palette Utility 2.0.0",
+      "description": [
+        "Builds a Foraxx (or SHO, HOO, HSO, OHS) palette image from stretched, starless narrowband images, plus an optional stars image. Rewritten for the V8 JavaScript runtime in PixInsight 1.9.4.",
+        "Original script by Paul Hancock, Paulyman Astro. Copyright (c) 2023-2024 Paul Hancock. All Rights Reserved. Source: https://github.com/theatrus/foraxx-palette-utility"
+      ],
+      "platforms": [
+        { "os": "all", "arch": "noarch", "version": "1.9.4:1.9.99" }
+      ]
+    },
+    {
+      "file": "packages/FPU_202412230653.zip",
+      "type": "script",
+      "releaseDate": "20241223",
+      "title": "Foraxx Palette Utility 1.16",
+      "description": [
+        "Legacy SpiderMonkey version for PixInsight 1.8.9-3 to 1.9.3.",
+        "Copyright (c) 2024 Paul Hancock. All Rights Reserved."
+      ],
+      "platforms": [
+        { "os": "all", "arch": "noarch", "version": "1.8.9-3:1.9.3" }
+      ]
+    }
+  ]
+}

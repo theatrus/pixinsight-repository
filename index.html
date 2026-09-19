@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>theatr.us &mdash; PixInsight repository</title>
+  <meta name="description" content="The PixInsight update repository for the Foraxx Palette Utility and other narrowband palette tools.">
+  <style>
+    :root{color-scheme:dark;--bg:#070b14;--card:#0f172a;--bd:rgba(148,163,184,.16);--tx:#e2e8f0;--dim:#94a3b8;--teal:#5eead4;--violet:#a78bfa;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--sans);line-height:1.65;
+      background-image:radial-gradient(ellipse 70rem 40rem at 80% -10%,rgba(94,234,212,.06),transparent 60%),radial-gradient(ellipse 60rem 40rem at 0% 110%,rgba(167,139,250,.07),transparent 60%);}
+    .wrap{max-width:44rem;margin:0 auto;padding:4rem 1.25rem 5rem}
+    h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.2;letter-spacing:-.02em;margin:.2rem 0 .4rem}
+    h1 .g{background:linear-gradient(100deg,#5eead4,#818cf8 55%,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+    p{color:var(--dim)}p strong{color:var(--tx)}
+    a{color:var(--teal);text-decoration:underline;text-underline-offset:.16em}
+    a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+    .card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1.3rem 1.5rem;margin:1.6rem 0}
+    .url{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;margin:.4rem 0 0}
+    code.repo{font-family:var(--mono);font-size:1.02rem;color:var(--teal);background:rgba(94,234,212,.08);border:1px solid rgba(94,234,212,.25);border-radius:8px;padding:.5rem .8rem;user-select:all}
+    code{font-family:var(--mono);font-size:.92em;background:rgba(148,163,184,.12);padding:.12em .4em;border-radius:5px}
+    ol{padding-left:1.2rem}ol li{margin:.4rem 0}
+    .foot{border-top:1px solid var(--bd);margin-top:2.4rem;padding-top:1.4rem;font-size:.9rem;color:var(--dim);display:flex;gap:1.4rem;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">PixInsight update repository</p>
+  <h1>theatr.us for <span class="g">PixInsight</span></h1>
+  <p>This repository publishes the <strong>Foraxx Palette Utility</strong>, a script that
+     builds a Foraxx palette image (or a plain SHO, HOO, HSO or OHS mapping) from
+     stretched, starless narrowband images, with an optional stars image, channel
+     gains and the standard Foraxx curves. Version 2 runs on the V8 JavaScript
+     runtime in PixInsight 1.9.4 and later; the original 1.16 is still served to
+     PixInsight 1.8.9-3 through 1.9.3.</p>
+  <p>The original script was written and published by <strong>Paul Hancock
+     (Paulyman Astro)</strong>. The Foraxx palette and its dynamic PixelMath
+     expressions come from <a href="https://thecoldestnights.com/2020/06/pixinsight-dynamic-narrowband-combinations-with-pixelmath/">The Coldest Nights</a>.</p>
+
+  <div class="card">
+    <p class="eyebrow">Add this repository in PixInsight</p>
+    <div class="url"><code class="repo">https://pixinsight.psf-guard.com/</code></div>
+  </div>
+
+  <p class="eyebrow">How to install</p>
+  <ol>
+    <li>In PixInsight, open <strong>Resources &rarr; Updates &rarr; Manage Repositories</strong>.</li>
+    <li>Add the URL above, including the trailing slash, and close the dialog.</li>
+    <li>Run <strong>Resources &rarr; Updates &rarr; Check for Updates</strong>, accept the update, and restart PixInsight.</li>
+    <li>Find the script under <strong>Script &rarr; Utilities &rarr; ForaxxPaletteUtility</strong>.</li>
+  </ol>
+  <p>The scripts are not code-signed, so PixInsight prints a warning in the console
+     the first time each runs. That is expected.</p>
+
+  <p class="foot">
+    <a href="updates.xri">Repository index</a>
+    <a href="https://github.com/theatrus/foraxx-palette-utility">Foraxx Palette Utility source</a>
+    <a href="https://github.com/theatrus/pixinsight-repository">Repository source</a>
+    <a href="https://psf-guard.com/">psf-guard.com</a>
+  </p>
+</div>
+</body>
+</html>
