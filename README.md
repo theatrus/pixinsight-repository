@@ -1,13 +1,14 @@
 # pixinsight-repository
 
 The **theatr.us PixInsight update repository**, served at
-**https://pixinsight.psf-guard.com/**. It currently publishes the
+**https://pixinsight.theatr.us/**. It currently publishes the
 **Foraxx Palette Utility** (source: [theatrus/foraxx-palette-utility](https://github.com/theatrus/foraxx-palette-utility)),
 both the V8 rewrite for PixInsight 1.9.4+ and the original 1.16 for older
 1.8.9-3 to 1.9.3 installs.
 
-PixInsight users add `https://pixinsight.psf-guard.com/` under
-Resources > Updates > Manage Repositories.
+PixInsight users add `https://pixinsight.theatr.us/` under
+Resources > Updates > Manage Repositories. The earlier address
+`https://pixinsight.psf-guard.com/` is a permanent alias of the same files.
 
 ## Layout
 
@@ -32,14 +33,14 @@ host name.
 
 Pushing to `main` triggers a flotswarm push-to-deploy on **ec2admin**
 (`deploy-pixinsight-repo`): it `git reset`s this checkout and runs
-`build-index.py --publish /www/pixinsight.psf-guard.com`, which copies the
+`build-index.py --publish /www/pixinsight.theatr.us`, which copies the
 archives first, then `index.html`, then `updates.xri` with fresh SHA-1
 digests, each swapped in atomically, and finally removes archives that are no
 longer listed.
 
 ```
-https://pixinsight.psf-guard.com/updates.xri     # the index PixInsight reads
-https://pixinsight.psf-guard.com/<archive>.zip   # the packages
+https://pixinsight.theatr.us/updates.xri     # the index PixInsight reads
+https://pixinsight.theatr.us/<archive>.zip   # the packages
 ```
 
 ## Adding or updating a package
