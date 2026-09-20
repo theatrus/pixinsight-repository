@@ -44,6 +44,8 @@ def load(path):
         data = json.load(fh)
     if not isinstance(data.get("packages"), list) or not data["packages"]:
         fail("packages.json needs a non-empty 'packages' list")
+    if "serverURL" in data and not re.match(r"^https://[^\s]+/$", data["serverURL"]):
+        fail("serverURL must be an https URL ending in '/'")
     seen = set()
     for i, p in enumerate(data["packages"]):
         where = f"packages[{i}]"
@@ -97,6 +99,11 @@ def build_xri(data):
         for p in packages:
             package = ET.SubElement(platform, "package", fileName=p["_name"], sha1=p["_sha1"],
                                     type=p["type"], releaseDate=p["releaseDate"])
+            # PixInsight resolves fileName against the repository URL as the
+            # user typed it, and a URL with no path after the host ends up as
+            # "https://<fileName>". serverURL pins the base explicitly.
+            if data.get("serverURL"):
+                package.set("serverURL", data["serverURL"])
             ET.SubElement(package, "title").text = p["title"]
             paragraphs(ET.SubElement(package, "description"), p["description"])
     pretty = minidom.parseString(ET.tostring(xri, encoding="unicode")).toprettyxml(indent="   ")

@@ -23,7 +23,10 @@ path, the package type, a release date (`YYYYMMDD`), a title, description
 paragraphs, and the platforms it applies to. A platform's `version` is an
 inclusive PixInsight version range such as `1.9.4:1.9.99`. Archives are served
 flat at the repository root, since PixInsight resolves `fileName` relative to
-the repository URL.
+the repository URL. Every package also carries `serverURL`, the repository's
+own URL, because PixInsight resolves `fileName` against the repository URL as
+typed and a bare `https://host` (no trailing slash) turns the file name into a
+host name.
 
 ## How it's published
 

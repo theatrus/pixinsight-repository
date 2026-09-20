@@ -3,6 +3,7 @@
     "theatr.us PixInsight repository: scripts and tools for narrowband palette work.",
     "Add https://pixinsight.psf-guard.com/ under Resources > Updates > Manage Repositories."
   ],
+  "serverURL": "https://pixinsight.psf-guard.com/",
   "packages": [
     {
       "file": "packages/FPU_202609190601.zip",
@@ -14,7 +15,11 @@
         "Original script by Paul Hancock, Paulyman Astro. Copyright (c) 2023-2024 Paul Hancock. All Rights Reserved. Source: https://github.com/theatrus/foraxx-palette-utility"
       ],
       "platforms": [
-        { "os": "all", "arch": "noarch", "version": "1.9.4:1.9.99" }
+        {
+          "os": "all",
+          "arch": "noarch",
+          "version": "1.9.4:1.9.99"
+        }
       ]
     },
     {
@@ -27,7 +32,11 @@
         "Copyright (c) 2024 Paul Hancock. All Rights Reserved."
       ],
       "platforms": [
-        { "os": "all", "arch": "noarch", "version": "1.8.9-3:1.9.3" }
+        {
+          "os": "all",
+          "arch": "noarch",
+          "version": "1.8.9-3:1.9.3"
+        }
       ]
     }
   ]
