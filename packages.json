@@ -6,12 +6,12 @@
   "serverURL": "https://pixinsight.theatr.us/",
   "packages": [
     {
-      "file": "packages/FPU_202609211628.zip",
+      "file": "packages/FPU_202609212048.zip",
       "type": "script",
       "releaseDate": "20260921",
-      "title": "Foraxx Palette Utility 2.2.4",
+      "title": "Foraxx Palette Utility 2.3.0",
       "description": [
-        "Builds a Foraxx (or SHO, HOO, HSO, OHS) palette image from stretched, starless narrowband images, plus an optional stars image. The Foraxx palette is The Coldest Nights' dynamic narrowband combination (https://thecoldestnights.com/). Adds mask bias and contrast, per-channel midtones, channel-ratio masks, protected saturation and a colour-preserving L* curve. Rewritten for the V8 JavaScript runtime in PixInsight 1.9.4. Installs under Script > theatr.us.",
+        "Builds a Foraxx (or SHO, HOO, HSO, OHS) palette image from stretched, starless narrowband images, plus an optional stars image. The Foraxx palette is The Coldest Nights' dynamic narrowband combination (https://thecoldestnights.com/). Adds a live preview, mask bias and contrast, per-channel midtones, channel-ratio masks, protected saturation and a colour-preserving L* curve. Rewritten for the V8 JavaScript runtime in PixInsight 1.9.4. Installs under Script > theatr.us.",
         "Original script by Paul Hancock, Paulyman Astro. Copyright (c) 2023-2024 Paul Hancock. Copyright (c) 2026 Yann Ramin, Apache License 2.0. Source: https://github.com/theatrus/foraxx-palette-utility"
       ],
       "platforms": [
