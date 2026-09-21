@@ -2,7 +2,8 @@
 
 The **theatr.us PixInsight update repository**, served at
 **https://pixinsight.theatr.us/**. It currently publishes the
-**Foraxx Palette Utility** (source: [theatrus/foraxx-palette-utility](https://github.com/theatrus/foraxx-palette-utility)),
+**Foraxx Palette Utility** (the Foraxx palette is
+[The Coldest Nights](https://thecoldestnights.com/)' dynamic narrowband combination) (source: [theatrus/foraxx-palette-utility](https://github.com/theatrus/foraxx-palette-utility)),
 both the V8 rewrite for PixInsight 1.9.4+ and the original 1.16 for older
 1.8.9-3 to 1.9.3 installs.
 
