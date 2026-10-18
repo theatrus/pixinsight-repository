@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xri version="1.0">
+   <description>
+      <p>theatr.us PixInsight repository: scripts and tools for narrowband palette work.</p>
+      <p>Add https://pixinsight.theatr.us/ under Resources &gt; Updates &gt; Manage Repositories. The older address https://pixinsight.psf-guard.com/ keeps working.</p>
+   </description>
+   <platform os="all" arch="noarch" version="1.9.4:1.9.99">
+      <package fileName="FPU_202610182217.zip" sha1="9af4a0447980fd5c558b13378a0814b057f01af0" type="script" releaseDate="20261018" serverURL="https://pixinsight.theatr.us/">
+         <title>Foraxx Palette Utility 2.4.1</title>
+         <description>
+            <p>Builds a Foraxx (or SHO, HOO, HSO, OHS) palette image from stretched, starless narrowband images, plus an optional stars image. The Foraxx palette is The Coldest Nights&apos; dynamic narrowband combination (https://thecoldestnights.com/). Adds a zoomable preview, mask bias and contrast, per-channel midtones, channel-ratio masks, protected saturation and a colour-preserving L* curve. Rewritten for the V8 JavaScript runtime in PixInsight 1.9.4. Installs under Script &gt; theatr.us.</p>
+            <p>Original script by Paul Hancock, Paulyman Astro. Copyright (c) 2023-2024 Paul Hancock. Copyright (c) 2026 Yann Ramin, Apache License 2.0. Source: https://github.com/theatrus/foraxx-palette-utility</p>
+         </description>
+      </package>
+   </platform>
+   <platform os="all" arch="noarch" version="1.8.9-3:1.9.3">
+      <package fileName="FPU_202412230653.zip" sha1="cbd9be054dd4957c58a21ba519ce8776f793e061" type="script" releaseDate="20241223" serverURL="https://pixinsight.theatr.us/">
+         <title>Foraxx Palette Utility 1.16</title>
+         <description>
+            <p>Legacy SpiderMonkey version for PixInsight 1.8.9-3 to 1.9.3. The Foraxx palette is The Coldest Nights&apos; dynamic narrowband combination (https://thecoldestnights.com/).</p>
+            <p>Copyright (c) 2024 Paul Hancock. All Rights Reserved.</p>
+         </description>
+      </package>
+   </platform>
+</xri>
+<Signature developerId="theatrus" timestamp="2026-10-18T22:17:23.573Z" encoding="Base64">spLpCKgIAXR2fsGkqEm9aO5XgEHjI9qzvt2cS0oj+rokS4KUE8AwAP1/fbfv5vE/BP09wgzVB66cUzZYOssQCQ==</Signature>
