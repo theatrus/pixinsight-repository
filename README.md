@@ -16,6 +16,7 @@ Resources > Updates > Manage Repositories. The earlier address
 ```
 packages.json      # what is published: archives, titles, platform version ranges
 packages/*.zip     # the package archives (src/scripts/<Name>/... trees)
+updates.xri        # the signed index, when present (see Signing)
 index.html         # the landing page
 build-index.py     # generates updates.xri and lays out the served tree
 ```
@@ -35,9 +36,9 @@ host name.
 Pushing to `main` triggers a flotswarm push-to-deploy on **ec2admin**
 (`deploy-pixinsight-repo`): it `git reset`s this checkout and runs
 `build-index.py --publish /www/pixinsight.theatr.us`, which copies the
-archives first, then `index.html`, then `updates.xri` with fresh SHA-1
-digests, each swapped in atomically, and finally removes archives that are no
-longer listed.
+archives first, then `index.html`, then `updates.xri` (the committed signed
+one, or a fresh unsigned one if none is committed), each swapped in
+atomically, and finally removes archives that are no longer listed.
 
 ```
 https://pixinsight.theatr.us/updates.xri     # the index PixInsight reads
@@ -51,10 +52,26 @@ https://pixinsight.theatr.us/<archive>.zip   # the packages
 2. Copy it into `packages/` under a new, unique name.
 3. Add or update its entry in `packages.json`. To replace a version, point the
    existing entry at the new archive and bump the title and release date.
-4. Run `./build-index.py --check`, then push to `main`.
+4. Write and sign the index (see Signing), run `./build-index.py --check`,
+   then push to `main`.
 
-The index is not code-signed. PixInsight installs from unsigned repositories
-with a warning; signing needs a Certified PixInsight Developer identity.
+For Foraxx, `./release.sh` in foraxx-palette-utility does all of this.
+
+## Signing
+
+The index is signed as the Certified PixInsight Developer `theatrus`, so
+PixInsight installs from it without the unsigned-repository warning. The
+signature is embedded in `updates.xri`, which is committed here:
+
+```
+./build-index.py --xri > updates.xri
+<foraxx-palette-utility>/scripts/pisign.py sign updates.xri --key-file ~/.pixinsight-signing/theatrus.ed25519
+```
+
+`build-index.py --check` and `--publish` refuse a committed `updates.xri`
+that is not exactly the `--xri` output plus its `Signature` line, so editing
+`packages.json` means signing again. The server never sees the key. Delete
+`updates.xri` to go back to an unsigned index.
 
 Format reference:
 https://pixinsight.com/doc/docs/PIRepositoryReference/PIRepositoryReference.html

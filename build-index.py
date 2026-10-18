@@ -6,11 +6,16 @@ updates.xri, the package archives (flat, at the repository root, as PixInsight
 resolves fileName relative to the repository URL) and index.html.
 
   build-index.py --check            validate packages.json and the archives
+  build-index.py --xri              print the unsigned updates.xri, for signing
   build-index.py --out DIR          write a fresh output tree into DIR
   build-index.py --publish DIR      update a live docroot in place: archives
                                     land first, then index.html, then
                                     updates.xri, each swapped in atomically;
                                     archives no longer listed are removed last
+
+If updates.xri is committed beside packages.json, it is the signed index: it
+must be the --xri output plus PixInsight's Signature line, and it is
+published as is. foraxx-palette-utility's release.sh writes and signs it.
 
 Format reference: https://pixinsight.com/doc/docs/PIRepositoryReference/PIRepositoryReference.html
 """
@@ -23,7 +28,6 @@ import shutil
 import sys
 import tempfile
 import xml.etree.ElementTree as ET
-from xml.dom import minidom
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OS_VALUES = {"any", "all", "freebsd", "linux", "macosx", "osx", "macos", "windows"}
@@ -106,10 +110,47 @@ def build_xri(data):
                 package.set("serverURL", data["serverURL"])
             ET.SubElement(package, "title").text = p["title"]
             paragraphs(ET.SubElement(package, "description"), p["description"])
-    pretty = minidom.parseString(ET.tostring(xri, encoding="unicode")).toprettyxml(indent="   ")
-    # minidom emits its own declaration; keep exactly one, in the PixInsight form.
-    body = pretty.split("\n", 1)[1]
-    return '<?xml version="1.0" encoding="UTF-8"?>\n' + body
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + pcl_element(xri, 0) + "\n"
+
+
+def pcl_escape(text, apos):
+    text = text.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;").replace(">", "&gt;")
+    return text.replace("'", "&apos;") if apos else text
+
+
+def pcl_element(el, level):
+    """Writes an element as PixInsight's XML classes do when they sign a
+    document (three-space indent; ' escaped in text, not in attributes), so a
+    signed updates.xri is this text plus one Signature line."""
+    pad = " " * (3 * level)
+    attrs = "".join(f' {k}="{pcl_escape(v, False)}"' for k, v in el.attrib.items())
+    if len(el):
+        inner = "\n".join(pcl_element(c, level + 1) for c in el)
+        return f"{pad}<{el.tag}{attrs}>\n{inner}\n{pad}</{el.tag}>"
+    if el.text:
+        return f"{pad}<{el.tag}{attrs}>{pcl_escape(el.text, True)}</{el.tag}>"
+    return f"{pad}<{el.tag}{attrs}/>"
+
+
+SIGNED = os.path.join(HERE, "updates.xri")
+
+
+def signed_xri(xri):
+    """The committed, signed updates.xri if there is one. It must be the
+    generated index plus a Signature line; anything else means packages.json
+    changed after signing."""
+    if not os.path.isfile(SIGNED):
+        return None, None
+    with open(SIGNED, encoding="utf-8") as fh:
+        signed = fh.read()
+    body, _, last = signed.rstrip("\n").rpartition("\n")
+    m = re.match(r'<Signature developerId="([^"]+)" timestamp="([^"]+)" encoding="Base64">[A-Za-z0-9+/=]+</Signature>$', last)
+    if not m:
+        fail("updates.xri has no Signature line at the end")
+    if body + "\n" != xri:
+        fail("updates.xri was signed for other content; regenerate it with --xri and sign it again "
+             "(or delete it to publish unsigned)")
+    return signed, f"signed by {m.group(1)} at {m.group(2)}"
 
 
 def stage(directory, name, payload=None, src=None):
@@ -162,6 +203,7 @@ def main():
     mode.add_argument("--check", action="store_true")
     mode.add_argument("--out", metavar="DIR")
     mode.add_argument("--publish", metavar="DIR")
+    mode.add_argument("--xri", action="store_true")
     args = ap.parse_args()
 
     data = load(os.path.join(HERE, "packages.json"))
@@ -172,10 +214,17 @@ def main():
         index = fh.read()
     xri = build_xri(data)
 
+    if args.xri:
+        sys.stdout.write(xri)
+        return
+    signed, how = signed_xri(xri)
+    if signed:
+        xri = signed
     if args.check:
         for p in data["packages"]:
             print(f"ok {p['_name']} sha1={p['_sha1']} {p['title']}")
         print(f"ok {len(data['packages'])} package(s)")
+        print(f"ok updates.xri {how}" if signed else "ok updates.xri unsigned (no committed updates.xri)")
         return
     target = args.out or args.publish
     if args.out:
