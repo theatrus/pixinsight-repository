@@ -5,8 +5,8 @@
       <p>Add https://pixinsight.theatr.us/ under Resources &gt; Updates &gt; Manage Repositories. The older address https://pixinsight.psf-guard.com/ keeps working.</p>
    </description>
    <platform os="all" arch="noarch" version="1.9.4:1.9.99">
-      <package fileName="FPU_202610182217.zip" sha1="9af4a0447980fd5c558b13378a0814b057f01af0" type="script" releaseDate="20261018" serverURL="https://pixinsight.theatr.us/">
-         <title>Foraxx Palette Utility 2.4.1</title>
+      <package fileName="FPU_202610202042.zip" sha1="2e44792da40f3270cdd6205277792dfef9a03462" type="script" releaseDate="20261020" serverURL="https://pixinsight.theatr.us/">
+         <title>Foraxx Palette Utility 2.5.0</title>
          <description>
             <p>Builds a Foraxx (or SHO, HOO, HSO, OHS) palette image from stretched, starless narrowband images, plus an optional stars image. The Foraxx palette is The Coldest Nights&apos; dynamic narrowband combination (https://thecoldestnights.com/). Adds a zoomable preview, mask bias and contrast, per-channel midtones, channel-ratio masks, protected saturation and a colour-preserving L* curve. Rewritten for the V8 JavaScript runtime in PixInsight 1.9.4. Installs under Script &gt; theatr.us.</p>
             <p>Original script by Paul Hancock, Paulyman Astro. Copyright (c) 2023-2024 Paul Hancock. Copyright (c) 2026 Yann Ramin, Apache License 2.0. Source: https://github.com/theatrus/foraxx-palette-utility</p>
@@ -23,4 +23,4 @@
       </package>
    </platform>
 </xri>
-<Signature developerId="theatrus" timestamp="2026-10-18T22:17:23.573Z" encoding="Base64">spLpCKgIAXR2fsGkqEm9aO5XgEHjI9qzvt2cS0oj+rokS4KUE8AwAP1/fbfv5vE/BP09wgzVB66cUzZYOssQCQ==</Signature>
+<Signature developerId="theatrus" timestamp="2026-10-20T20:42:42.070Z" encoding="Base64">m3WcOmVKpVg5e+/ZkUbiP2Jz4D5Xy0qjnHDhtSAVHRXkQsvAg9QSSTPabGtt3lxh0aVwwrGdyldOZFiLSvV2Dw==</Signature>
