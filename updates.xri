@@ -13,14 +13,5 @@
          </description>
       </package>
    </platform>
-   <platform os="all" arch="noarch" version="1.8.9-3:1.9.3">
-      <package fileName="FPU_202412230653.zip" sha1="cbd9be054dd4957c58a21ba519ce8776f793e061" type="script" releaseDate="20241223" serverURL="https://pixinsight.theatr.us/">
-         <title>Foraxx Palette Utility 1.16</title>
-         <description>
-            <p>Legacy SpiderMonkey version for PixInsight 1.8.9-3 to 1.9.3. The Foraxx palette is The Coldest Nights&apos; dynamic narrowband combination (https://thecoldestnights.com/).</p>
-            <p>Copyright (c) 2024 Paul Hancock. All Rights Reserved.</p>
-         </description>
-      </package>
-   </platform>
 </xri>
-<Signature developerId="theatrus" timestamp="2026-10-20T20:42:42.070Z" encoding="Base64">m3WcOmVKpVg5e+/ZkUbiP2Jz4D5Xy0qjnHDhtSAVHRXkQsvAg9QSSTPabGtt3lxh0aVwwrGdyldOZFiLSvV2Dw==</Signature>
+<Signature developerId="theatrus" timestamp="2026-11-10T19:51:44.702Z" encoding="Base64">DRE4At4PO+2H88U9a+3d3V6adjpq0m29Otddo/xiryCkYpWNyNqSjrgDvb9j2s+gvZnBeoyXk56nyerc/il6CQ==</Signature>
